@@ -1,0 +1,39 @@
+spring:
+  redis:
+    host: 127.31.97.239
+    port: 6379
+    connect-timeout: 5000
+  cloud:
+    nacos:
+      discovery:
+        service: log-microservice
+      server-addr: 127.0.0.1:8848
+  application:
+    name: log-microservice
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${bossyun.datasource.ip}:3306/user-center?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: ${bossyun.datasource.username}
+    password: ${bossyun.datasource.password}
+bsy:
+  # 日志追踪
+  trace:
+    enable: true
+  #审计日志
+  audit-log:
+    enabled: true
+    log-type: db
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://${bossyun.datasource.ip}:3306/logger-center?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+      username: ${bossyun.datasource.username}
+      password: ${bossyun.datasource.password}
+server:
+  port: 8000
+
+
+bossyun:
+  datasource:
+    ip: 172.31.97.239
+    username: root
+    password: 123456

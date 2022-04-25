@@ -1,0 +1,82 @@
+server:
+  port: 18081
+#
+#dubbo:
+#  registry:
+#    address: nacos://127.0.0.1:8848
+#  cloud:
+#    subscribed-services: sca-provider
+#  consumer:
+#    check: false
+#  protocol.port: 20881
+#  application:
+#    qos-enable: false
+logging:
+  level:
+    root: debug
+spring:
+  application:
+    name: sca-customer
+  main:
+    # Spring Boot 2.1 需要设定
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seata_demo?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: root
+    password: 123456
+
+  cloud:
+    nacos:
+      # Nacos 服务注册发现
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: SEATA_GROUP
+        group: SEATA_GROUP
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 50000
+        readTimeout: 50000
+seata:
+  enabled: true
+  application-id: sca-customer
+  tx-service-group: default_tx_group
+  enable-auto-data-source-proxy: true
+  data-source-proxy-mode: AT
+  sevice:
+    vgroup-mapping:
+      default_tx_group: default
+  client:
+    undo:
+      data-validation: true
+      log-serialization: jackson
+      log-table: undo_log
+      only-care-update-columns: true
+      compress:
+        enable: true
+        type: zip
+        threshold: 64k
+  config:
+    type: nacos
+    nacos:
+      namespace: SEATA_GROUP
+      serverAddr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      namespace: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+

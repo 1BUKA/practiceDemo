@@ -1,0 +1,5 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.bossyun.log.config.TtlMDCAdapterInitializer
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.bossyun.log.LogAutoConfigure

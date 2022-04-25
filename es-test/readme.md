@@ -12,7 +12,7 @@
 ## 入门
 - ELK是什么？
     - ElasticSearch： 全文搜索 9300内部集群通信端口、9200 http访问的端口
-    - LogStash： 数据手机
+    - LogStash： 数据收集
     - Kibana: 界面展示
 - [下载页面](https://www.elastic.co/cn/downloads/?elektra=home&storm=hero)
 

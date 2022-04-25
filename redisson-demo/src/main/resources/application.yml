@@ -1,0 +1,19 @@
+bsy:
+  redis:
+    cluster:
+      nodes:
+        - 121.4.55.66:6371
+        - 121.4.55.66:6372
+        - 121.4.55.66:6373
+        - 121.4.55.66:6374
+        - 121.4.55.66:6375
+        - 121.4.55.66:6376
+      password: 1234
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.21.196.219:3306/user-center?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+mybatis-plus:
+  mapper-locations: classpath:mapper/*/*.xml
